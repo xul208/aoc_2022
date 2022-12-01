@@ -1,16 +1,12 @@
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.Comparator;
-import java.util.List;
-import java.util.Queue;
 import java.util.SortedSet;
 import java.util.TreeSet;
 
 public class DecemberFirst {
 
-    private static int findMaxCalories (String fileName) throws IOException {
+    static int findMaxCalories(String fileName) throws IOException {
         int currentMax = 0;
         try {
             BufferedReader reader = new BufferedReader(new FileReader("input/" + fileName));
@@ -25,7 +21,6 @@ public class DecemberFirst {
                 } else {
                     currentSum += Integer.parseInt(line);
                 }
-                // read next line
                 line = reader.readLine();
             }
 
@@ -36,7 +31,7 @@ public class DecemberFirst {
         return currentMax;
     }
 
-    private static int findMaxThreeCalories (String fileName) throws IOException {
+    static int findMaxThreeCalories(String fileName) throws IOException {
         SortedSet<Integer> maxThree = new TreeSet<>();
         try {
             BufferedReader reader = new BufferedReader(new FileReader("input/" + fileName));
@@ -54,7 +49,6 @@ public class DecemberFirst {
                 } else {
                     currentSum += Integer.parseInt(line);
                 }
-                // read next line
                 line = reader.readLine();
             }
 
