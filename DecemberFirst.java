@@ -6,18 +6,18 @@ import java.util.TreeSet;
 
 public class DecemberFirst {
 
-    static int findMaxCalories(String fileName) throws IOException {
+    static int findMaxCalories() throws IOException {
         int currentMax = 0;
         try {
-            BufferedReader reader = new BufferedReader(new FileReader("input/" + fileName));
+            BufferedReader reader = new BufferedReader(new FileReader("input/" + "12_1_1.txt"));
             String line = reader.readLine();
             int currentSum = 0;
 
             while (line != null) {
                 System.out.println(line);
                 if (line.isBlank()) {
-                   currentMax = Math.max(currentSum, currentMax);
-                   currentSum = 0;
+                    currentMax = Math.max(currentSum, currentMax);
+                    currentSum = 0;
                 } else {
                     currentSum += Integer.parseInt(line);
                 }
@@ -31,21 +31,21 @@ public class DecemberFirst {
         return currentMax;
     }
 
-    static int findMaxThreeCalories(String fileName) throws IOException {
+    static int findMaxThreeCalories() throws IOException {
         SortedSet<Integer> maxThree = new TreeSet<>();
         try {
-            BufferedReader reader = new BufferedReader(new FileReader("input/" + fileName));
+            BufferedReader reader = new BufferedReader(new FileReader("input/" + "12_1_1.txt"));
             String line = reader.readLine();
             int currentSum = 0;
 
             while (line != null) {
                 System.out.println(line);
                 if (line.isBlank()) {
-                   maxThree.add(currentSum);
-                   if (maxThree.size() > 3) {
-                       maxThree.remove(maxThree.first());
-                   }
-                   currentSum = 0;
+                    maxThree.add(currentSum);
+                    if (maxThree.size() > 3) {
+                        maxThree.remove(maxThree.first());
+                    }
+                    currentSum = 0;
                 } else {
                     currentSum += Integer.parseInt(line);
                 }
@@ -60,9 +60,9 @@ public class DecemberFirst {
     }
 
     public static void main(String[] args) throws IOException {
-        final int firstResult = DecemberFirst.findMaxCalories("12_1_1.txt");
+        final int firstResult = DecemberFirst.findMaxCalories();
         System.out.printf("first result is: %d", firstResult);
-        final int secondResult = DecemberFirst.findMaxThreeCalories("12_1_1.txt");
+        final int secondResult = DecemberFirst.findMaxThreeCalories();
         System.out.printf("second result is: %d", secondResult);
     }
 }
