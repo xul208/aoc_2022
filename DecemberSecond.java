@@ -9,7 +9,7 @@ public class DecemberSecond {
     static int calculatePlanPoints(ToIntFunction<String> parser) throws IOException {
         int points = 0;
         try {
-            BufferedReader reader = new BufferedReader(new FileReader("input/" + "12_2_1.txt"));
+            BufferedReader reader = new BufferedReader(new FileReader("input" + "/" + "12_2_1.txt"));
             String line = reader.readLine();
 
             while (line != null) {
@@ -71,7 +71,7 @@ public class DecemberSecond {
         final int leftScore = dictionary.get(leftGuesture);
         final int permutationScore = outcomes.get(rightPlan);
         final int rightScore =
-                permutations.entrySet().stream().filter(e -> e.getValue() == permutationScore).filter(e -> e.getKey() / 10 == leftScore).map(e -> e.getKey()).map(x -> x % 10).findFirst().get();
+                permutations.entrySet().stream().filter(e -> e.getValue() == permutationScore).filter(e -> e.getKey() / 10 == leftScore).map(Map.Entry::getKey).map(x -> x % 10).findFirst().get();
         return permutationScore + rightScore;
     }
 
