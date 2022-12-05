@@ -1,6 +1,7 @@
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
+import java.util.function.Consumer;
 import java.util.function.ToIntFunction;
 
 public class Util {
@@ -19,5 +20,20 @@ public class Util {
             e.printStackTrace();
         }
         return points;
+    }
+
+    static void consumeLines(Consumer<String> parser, String path) throws IOException {
+        try {
+            BufferedReader reader = new BufferedReader(new FileReader("input" + "/" + path));
+            String line = reader.readLine();
+
+            while (line != null) {
+                parser.accept(line);
+                line = reader.readLine();
+            }
+        } catch (IOException e) {
+
+            e.printStackTrace();
+        }
     }
 }
