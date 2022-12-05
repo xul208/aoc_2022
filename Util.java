@@ -1,0 +1,23 @@
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
+import java.util.function.ToIntFunction;
+
+public class Util {
+    static int calculatePointSum(ToIntFunction<String> parser, String path) throws IOException {
+        int points = 0;
+        try {
+            BufferedReader reader = new BufferedReader(new FileReader("input" + "/" + path));
+            String line = reader.readLine();
+
+            while (line != null) {
+                points += parser.applyAsInt(line);
+                line = reader.readLine();
+            }
+        } catch (IOException e) {
+
+            e.printStackTrace();
+        }
+        return points;
+    }
+}
