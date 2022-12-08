@@ -37,4 +37,13 @@ public class Util {
         }
     }
 
+    static String encodeAxis(int y, int x) {
+        return Integer.toString(y) + "_" + Integer.toString(x);
+    }
+
+    static String decodeFromAxis(String token, int offset) {
+        final String[] numbers = token.split("_");
+        return numbers[offset];
+    }
+
 }
