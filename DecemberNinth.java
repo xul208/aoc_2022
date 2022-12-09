@@ -8,6 +8,8 @@ public class DecemberNinth {
     static Util.CustomPair<Integer> tailPos = new Util.CustomPair<>(0, 0);
     static Set<Util.CustomPair> tailPosHistory = new HashSet<>();
 
+    static final int DIMENSION = 6;
+
     static void parseLine(String line) {
         final String[] tokens = line.split(" ");
         Util.CustomPair<Integer> vector = null;
@@ -23,6 +25,24 @@ public class DecemberNinth {
         simulate(vector, repeat);
     }
 
+    static void visualizeStep() {
+        for (int i = DIMENSION - 1; i >= 0; --i) {
+            for (int j = 0; j < DIMENSION; ++j) {
+                var currentPos = new Util.CustomPair<>(i, j);
+                if (tailPos.equals(currentPos)) {
+                    System.out.print("T");
+                } else if (headPos.equals(currentPos)) {
+                    System.out.print("H");
+                } else if (new Util.CustomPair<>(0, 0).equals(currentPos)) {
+                    System.out.print("s");
+                } else {
+                    System.out.print(".");
+                }
+            }
+            System.out.print("\n");
+        }
+    }
+
     static void simulate(Util.CustomPair<Integer> vector, int repeat) {
         for (int i = 0; i < repeat; ++i) {
             int prevY = headPos.getKey() + vector.getKey();
@@ -30,6 +50,7 @@ public class DecemberNinth {
             headPos.setKey(prevY);
             headPos.setValue(prevX);
             trackNewHeadPosition();
+            visualizeStep();
         }
         System.out.println("==================");
     }
@@ -53,7 +74,7 @@ public class DecemberNinth {
     }
 
     public static void main(String[] args) throws IOException {
-        Util.consumeLines(DecemberNinth::parseLine, "12_9_1.txt");
+        Util.consumeLines(DecemberNinth::parseLine, "12_9_0.txt");
         System.out.println(tailPosHistory.size());
     }
 }
